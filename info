@@ -1,0 +1,16 @@
+Correr el Sistema:
+/Establecerse en la ruta del proyecto
+
+    /npm install
+    /npm start || npm run dev (developer)
+
+Funcionalidades de las carpetas:
+
+/src
+
+    /controllers: declarar funciones para las rutas
+    /models: esquemas de nuestra base de datos
+    /client: archivos estaticos en react
+    /routes: definir rutas 
+    /app: nuestra aplicacion react
+

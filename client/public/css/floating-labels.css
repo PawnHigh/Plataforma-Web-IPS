@@ -1,0 +1,227 @@
+/* --------------------------------
+            YOUR STYLES 
+  -------------------------------- */
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+  body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Raleway', sans-serif;
+  }
+  /*Barra de Navegacion*/
+  .navbar.navbar-expand-lg.navbar-light.bg-light{
+      margin: 0;
+      padding-left: 0px;
+      padding-right: 30px;
+      padding-top: 0;
+      padding-bottom: 0;
+      box-shadow: 0 1px 7px -2px rgba(0,0,0,.2);
+  }
+  .navbar-brand{
+      margin-left: 1rem;
+      border: none;
+      padding: 12px;
+      border-radius: 0;
+      background-color: none;
+  }
+  .nav-item:hover {
+      text-decoration: none;
+  }
+  .logo-text {
+    display: flex;
+    text-align: center;
+  }
+  @media screen and (max-width: 768px) {
+    .col-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-right: 0;
+    }
+    .col-9.border{
+        max-width: 100%;
+    }
+    .img-fluid {
+        max-width: 135%;
+    }
+}
+  /*Nav Lateral*/
+  .list-group-item.list-group-item-action{
+      padding-left: 30px;
+  }
+  .list-group-item:first-child{
+      border-radius: 0;
+  }
+  .list-group-item:last-child{
+      border-radius: 0;
+  }
+  .col-3 {
+    padding-left: 0;
+  }
+  /*Nav Central*/
+  .container-fluid{
+      padding: 0;
+  }
+  .tab-content {
+      width: 100%;
+  }
+  .col-9.border{
+      margin: 0;
+      padding: 0 0 0 0;
+      border: 0;
+  }
+  .row{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  /*Tablas*/
+  .col-12.bg-light{
+      padding: 15px;
+  }
+  select{
+      margin: 15px;
+      padding: 3px;
+      background: #f8f9fa;
+      border:2px solid rgba(0,0,0,0.2);
+  }
+  .bg-primary{
+      color: #fff;
+  }
+  
+  /* --------------------------------
+              FLOATING LABELS 
+    -------------------------------- */
+  
+  .form-signin {
+    width: 100%;
+    max-width: 360px;
+    padding: 15px;
+    margin: auto;
+  }
+  
+  .form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  
+  .form-label-group > input,
+  .form-label-group > label {
+    height: 2.5rem;
+    padding: .6rem;
+  }
+  
+  .form-label-group > label {
+    font-size: 13.5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0; /* Override default `<label>` margin */
+    line-height: 1.5;
+    color: #495057;
+    pointer-events: none;
+    cursor: text; /* Match the input under the label */
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+  }
+  
+  .form-label-group input::-webkit-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input:-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::-moz-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input:not(:placeholder-shown) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .form-label-group input:not(:placeholder-shown) ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 9.5px;
+    color: #777;
+  }
+  
+  /* Fallback for Edge
+  -------------------------------------------------- */
+  @supports (-ms-ime-align: auto) {
+    .form-label-group > label {
+      display: none;
+    }
+    .form-label-group input::-ms-input-placeholder {
+      color: #777;
+    }
+  }
+  
+  /* Fallback for IE
+  -------------------------------------------------- */
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .form-label-group > label {
+      display: none;
+    }
+    .form-label-group input:-ms-input-placeholder {
+      color: #777;
+    }
+  }
+  
+  /*
+  -------------------------------------------------------- */
+  .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+  }
+  
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+  }
+  /* Size Img
+  -------------------------------------------------- */
+  .form-signin img {
+    width: 110px;
+    height: auto;
+    border-radius: 20px;
+  }
+  
+  /* Opacity 
+  -------------------------------------------------- */
+  .check-remember {
+    opacity: .4;
+  }
+  
+  .remember-checked {
+      opacity: 1;
+  }
+
+  .footer-reg {
+    left: 0;
+    right: 0;
+    position: fixed;
+    bottom: 0;
+  }
+
+  /*BUSQUEDA universidades*/
+.anyClass {
+  height:150px;
+  overflow-y: scroll;
+}
