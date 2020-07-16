@@ -1,4 +1,5 @@
-"# Plataforma-Web-IPS" 
+# Plataforma-Web-IPS
 
->>> Código JavaScript Publicado
+>>> Logo de la Página
+
 ![alt tag](docs/logo.png)
