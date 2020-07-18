@@ -3,6 +3,9 @@ import LicenciamientoTab from './mains/licenciamientotab';
 import ProgramasAcademicosTab from './mains/programasacademicostab';
 import CantidadIngresanteTab from './mains/cantidadingresantetab';
 import UbicacionUniversidadesTab from './mains/ubicaciontab';
+import TopUniversidadesTab from './mains/topuniversidadestab';
+import Beca18Tab from './mains/beca18tab';
+import ModificarLicenciamientoTab from './mains/modificarlicenciamientotab';
 
 class Main extends Component {
 
@@ -23,6 +26,10 @@ class Main extends Component {
         return (<div className="col-12 bg-light" >
           <ProgramasAcademicosTab></ProgramasAcademicosTab>
           </div>);
+      case 3:
+        return (<div className="col-12 bg-light" >
+          <Beca18Tab></Beca18Tab>
+          </div>);    
       case 4:
         return (<div className="col-12 bg-light" >
           <UbicacionUniversidadesTab></UbicacionUniversidadesTab>
@@ -30,6 +37,14 @@ class Main extends Component {
       case 5:
         return (<div className="col-12 bg-light" >
           <CantidadIngresanteTab></CantidadIngresanteTab>
+          </div>);
+      case 6:
+        return (<div className="col-12 bg-light" >
+          <TopUniversidadesTab></TopUniversidadesTab> 
+          </div>);
+      case 7:
+        return (<div className="col-12 bg-light" >
+          <ModificarLicenciamientoTab></ModificarLicenciamientoTab> 
           </div>);
       default: return(<h1>en Construccion</h1>);
     }

@@ -9,7 +9,7 @@ const value_table_index=[
     {id:4,value:"Periodo de Licenciamiento",rep:"UniPer"},
     {id:5,value:"Ciudad",rep:"UniCit"}];
 
-export default class LicenciamientoTab extends Component{
+export default class TopUniversidadesTab extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -93,4 +93,3 @@ export default class LicenciamientoTab extends Component{
         ) 
     }
 }
- 

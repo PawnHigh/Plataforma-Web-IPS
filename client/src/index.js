@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom'
-/* import * as serviceWorker from './serviceWorker' */
+import { BrowserRouter } from 'react-router-dom';
 
 import App from './App/App';
 
@@ -10,5 +9,3 @@ render((
         <App/>
     </BrowserRouter>
 ), document.getElementById('root'));
-
-/* serviceWorker.unregister() */

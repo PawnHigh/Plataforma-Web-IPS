@@ -23,7 +23,7 @@ class Scope extends Component{
         return(
             <div className="container">
                 <div className="row mt-4">
-                    <div className="col-md-8 offset-2">
+                    <div className="col-md-10 offset-1">
                         <div className="card">
                             <div className="header">
 
@@ -40,7 +40,7 @@ class Scope extends Component{
                                 }
                             </div>
                             < div className="card-footer">
-                                <form action='' className='form-inline'>
+                                <form action='' className='form-inline justify-content-center align-items-center'>
                                    {/*
                                     <div className='form-group'>
                                         <label htmlFor='id_pie'>
@@ -56,7 +56,7 @@ class Scope extends Component{
                                         </label>
                                     </div>
                                     */}
-                                    <div className='form-group'>
+                                    <div className='form-group p-2 text-center'>
                                         <label htmlFor='id_line'>
                                             <input 
                                                 id='id_line'
@@ -64,7 +64,7 @@ class Scope extends Component{
                                                 value='line'
                                                 checked={selectedOption==='line'}
                                                 onChange={this.handleOnchange}
-                                                className='form-control'
+                                                className='form-control p-3'
                                             />
                                             Line
                                         </label>
@@ -84,7 +84,7 @@ class Scope extends Component{
                                         </label>
                                     </div>
                                     */ }        
-                                    <div className='form-group'>
+                                    <div className='form-group p-2 text-center'>
                                         <label htmlFor='id_bar'>
                                             <input 
                                                 id='id_bar'
@@ -92,7 +92,7 @@ class Scope extends Component{
                                                 value='bar'
                                                 checked={selectedOption==='bar'}
                                                 onChange={this.handleOnchange}
-                                                className='form-control'
+                                                className='form-control p-3'
                                             />
                                             Bar
                                         </label>

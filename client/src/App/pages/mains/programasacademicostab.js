@@ -86,7 +86,7 @@ export default class ProgramasAcademicosTab extends Component{
                     <td>{fila.ProNam}</td>
                     <td>{fila.ProUni}</td>
                     <td>{fila.ProTip}</td>
-                    <td>{fila.ProLev} años</td>
+                    <td>{fila.ProLev}</td>
                     <td>{fila.ProCla}</td>
                 </tr>)}
             </table> 

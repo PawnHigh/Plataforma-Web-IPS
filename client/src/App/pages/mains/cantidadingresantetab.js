@@ -102,10 +102,10 @@ seleccionado=(e)=>{
     render(){
         return (
 
-            <div className="container">
-                <div className="row" >
+            <div className="container pl-0">
+                <div className="row mt-3">
                     <div className="col-md-12">
-                        <div className="form-label-group">
+                        <div className="form-label-group my-auto">
                             <input 
                                 id="bus" 
                                 className="form-control mr-sm-2" 

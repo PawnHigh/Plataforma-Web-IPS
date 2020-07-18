@@ -7,85 +7,60 @@
       padding: 0;
       font-family: 'Raleway', sans-serif;
   }
-  /*Barra de Navegacion*/
-  .navbar.navbar-expand-lg.navbar-light.bg-light{
-      margin: 0;
-      padding-left: 0px;
-      padding-right: 30px;
-      padding-top: 0;
-      padding-bottom: 0;
-      box-shadow: 0 1px 7px -2px rgba(0,0,0,.2);
-  }
-  .navbar-brand{
-      margin-left: 1rem;
-      border: none;
-      padding: 12px;
-      border-radius: 0;
-      background-color: none;
-  }
-  .nav-item:hover {
-      text-decoration: none;
-  }
-  .logo-text {
-    display: flex;
-    text-align: center;
-  }
-  @media screen and (max-width: 768px) {
-    .col-3 {
-        flex: 0 0 100%;
-        max-width: 100%;
-        padding-right: 0;
+  /*Responsive extras*/
+  @media screen and (max-width: 772px) {
+    /*.col-3 {
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding-right: 0;
     }
-    .col-9.border{
-        max-width: 100%;
-    }
+    .col-9{
+      max-width: 100% !important;
+      flex: 0 0 100%;
+    }*/
     .img-fluid {
-        max-width: 135%;
+      max-width: 190%;
     }
-}
-  /*Nav Lateral*/
-  .list-group-item.list-group-item-action{
-      padding-left: 30px;
+    .col-md-3, ::after, ::before{
+      box-sizing: initial;
+    }
+    .cont-pri {
+      margin-top: 50px !important;
+    }
+    .cont-pri-lat div {
+      height: 0 !important;
+    }
+    .offset-3 {
+      margin-left: 0;
+    }
   }
-  .list-group-item:first-child{
-      border-radius: 0;
-  }
-  .list-group-item:last-child{
-      border-radius: 0;
-  }
-  .col-3 {
-    padding-left: 0;
-  }
-  /*Nav Central*/
-  .container-fluid{
-      padding: 0;
-  }
-  .tab-content {
-      width: 100%;
-  }
-  .col-9.border{
-      margin: 0;
-      padding: 0 0 0 0;
-      border: 0;
-  }
-  .row{
-    margin-left: 0;
-    margin-right: 0;
-  }
-  /*Tablas*/
-  .col-12.bg-light{
-      padding: 15px;
-  }
+  /*ComboBox*/
   select{
-      margin: 15px;
-      padding: 3px;
-      background: #f8f9fa;
-      border:2px solid rgba(0,0,0,0.2);
+    margin: 15px;
+    padding: 3px;
+    background: #f8f9fa;
+    border:2px solid rgba(0,0,0,0.2);
+    width: 200px;
   }
-  .bg-primary{
-      color: #fff;
+  /*Otros*/
+  a:hover {
+    text-decoration: none;
   }
-  
+  a:active, a:active * { 
+    outline: none; 
+  }
+  a:focus, a:focus * { 
+    outline: none; 
+  }
+  table td{
+    max-width: 250px;
+    max-height: 50px;
+    text-overflow: ellipsis;
+    white-space  : nowrap;
+    overflow     : hidden;
+    vertical-align: middle !important;
+    font-size: smaller;
+  }
   /* --------------------------------
               FLOATING LABELS 
     -------------------------------- */
@@ -220,8 +195,15 @@
     bottom: 0;
   }
 
-  /*BUSQUEDA universidades*/
-.anyClass {
-  height:150px;
-  overflow-y: scroll;
-}
+  /* para posición fija*/
+  .cont-pri{
+    margin-top:70px;
+  }
+  .cont-pri-lat{
+    z-index: 1000;
+    opacity:0.9;
+    height: 100vh;
+  }
+  .cont-pri-lat div{
+    height: 100vh;
+  }

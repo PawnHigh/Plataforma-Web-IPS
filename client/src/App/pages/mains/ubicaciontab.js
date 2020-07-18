@@ -71,8 +71,8 @@ actualizacombo=(e)=>{
     render(){
         return (
 
-            <div className="container">
-                <div className="">
+            <div className="container pl-0 pt-1">
+                <div className="mt-3">
                     <div className="form-label-group">
                         <input id="bus" className="form-control mr-sm-2" onChange={this.actualizacombo}type="search" placeholder="Busca Tu universidad" aria-label="Search"/>
                         <label for="bus">Busca tu Universidad</label>
