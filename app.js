@@ -21,6 +21,7 @@ app.use('/api/unis', require('./routes/universidades.routes'))
 app.use('/api/programas', require('./routes/programas.routes'))
 app.use('/api/users', require('./routes/usuarios.routes'))
 app.use('/api/becas', require('./routes/becas.routes'))
+app.use('/api/mejores', require('./routes/mejores.routes'))
 
 
 // Serve the static files from the React app
