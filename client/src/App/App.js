@@ -5,6 +5,7 @@ import NavLat from './pages/navlateral';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Button, Modal } from 'react-bootstrap'
 import axios from 'axios';
+import localS from 'local-storage'
 
 //import Navigation from './pages/Navigation'
 import licenciamiento from './pages/views/licenciamiento'
@@ -60,6 +61,7 @@ export default class App extends Component {
         timer: 1500
       })
     } else {
+      localS.set('myData',this.state.EmailVerification)
       !this.state.show ? this.showunshow() : this.showunshow() 
       return MySwal.fire({
         position: 'top-end',

@@ -6,6 +6,7 @@ import UbicacionUniversidadesTab from './mains/ubicaciontab';
 import TopUniversidadesTab from './mains/topuniversidadestab';
 import Beca18Tab from './mains/beca18tab';
 import ModificarLicenciamientoTab from './mains/modificarlicenciamientotab';
+import localS from 'local-storage'
 
 class Main extends Component {
 
@@ -43,9 +44,20 @@ class Main extends Component {
           <TopUniversidadesTab></TopUniversidadesTab> 
           </div>);
       case 7:
-        return (<div className="col-12 bg-light" >
+        const varAdmin = localS.get('myData')
+        if(varAdmin === 'gersrpb@gmail.com'){
+          return (<div className="col-12 bg-light" >
           <ModificarLicenciamientoTab></ModificarLicenciamientoTab> 
           </div>);
+        } else {
+          return (
+            <div className="col-12 bg-light" >
+              <h4>
+            Eres Admin? Registrate ...
+              </h4>
+            </div>
+          )
+        }
       default: return(<h1>en Construccion</h1>);
     }
   }
