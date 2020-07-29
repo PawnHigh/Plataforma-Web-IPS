@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import NavLat from '../navlateral'; 
-import Centro from '../navcentro'; 
-import Main from '../navmain'; 
+import NavLat from '../navlateral';
+import Centro from '../navcentro';
+import Main from '../navmain';
 
 export default class Ubicacion extends Component {
 
@@ -9,21 +9,21 @@ export default class Ubicacion extends Component {
     //para tomar las funcionalidades del componente
     super(props);
     this.state = {
-      show:true,
-      ivalue:4,
-      texto:"Ubicacion de las Universidades"
+      show: true,
+      ivalue: 4,
+      texto: "Ubicacion de las Universidades"
     }
-   // this.cambiacolor=this.cambiacolor.bind(this);
+    // this.cambiacolor=this.cambiacolor.bind(this);
   }
-  render() {  
+  render() {
     return (
-        
-            <div className='col-md-12 px-0'>
-            <Centro texto={this.state.texto}></Centro>
-            <Main codigo={this.state.ivalue}></Main>
-            </div>
-        
-      )
+
+      <div className='col-md-12 px-0'>
+        <Centro texto={this.state.texto}></Centro>
+        <Main codigo={this.state.ivalue}></Main>
+      </div>
+
+    )
   }
 
 }

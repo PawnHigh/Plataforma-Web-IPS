@@ -9,15 +9,9 @@
   }
   /*Responsive extras*/
   @media screen and (max-width: 772px) {
-    /*.col-3 {
-      flex: 0 0 100%;
-      max-width: 100%;
-      padding-right: 0;
+    .row .lista{
+      flex-wrap: nowrap !important;
     }
-    .col-9{
-      max-width: 100% !important;
-      flex: 0 0 100%;
-    }*/
     .img-fluid {
       max-width: 190%;
     }
@@ -25,7 +19,7 @@
       box-sizing: initial;
     }
     .cont-pri {
-      margin-top: 50px !important;
+      margin-top: 60px !important;
     }
     .cont-pri-lat div {
       height: 0 !important;
@@ -42,6 +36,7 @@
     border:2px solid rgba(0,0,0,0.2);
     width: 200px;
   }
+
   /*Otros*/
   a:hover {
     text-decoration: none;
@@ -64,7 +59,15 @@
   /* --------------------------------
               FLOATING LABELS 
     -------------------------------- */
-  
+  .tabledata{
+    font-size: smaller;
+    border-top:solid gray 1px;
+  }
+  .t-row,.t-row nav{
+    height:60px;
+    border-bottom:solid gray 1px;
+  }
+
   .form-signin {
     width: 100%;
     max-width: 360px;
@@ -197,11 +200,10 @@
 
   /* para posición fija*/
   .cont-pri{
-    margin-top:70px;
+    margin-top:60px;
   }
   .cont-pri-lat{
     z-index: 1000;
-    opacity:0.9;
     height: 100vh;
   }
   .cont-pri-lat div{

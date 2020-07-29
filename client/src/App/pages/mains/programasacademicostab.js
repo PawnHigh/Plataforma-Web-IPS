@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Table from '../tabla';
 
 const value_cb_2 = [ { id:1,value: 'Arequipa'},{id:2, value:'Lima'}];
 const value_table_index=[
@@ -19,7 +20,9 @@ export default class ProgramasAcademicosTab extends Component{
           value_table:[],
           datos_tabla_invariable:[],
           op_1:value_table_index[0].value, //valor actual del combobox 1 
-          op_2:value_cb_2[0].value  //valor actual del combobox 2
+          op_2:value_cb_2[0].value,  //valor actual del combobox 2
+          requirementKey:Math.random(),
+          showtable:false
         }
     }
     
@@ -28,7 +31,9 @@ export default class ProgramasAcademicosTab extends Component{
         const res=await axios.get('/api/programas');
         this.setState({
             value_table:res.data,
-            datos_tabla_invariable:res.data
+            datos_tabla_invariable:res.data,
+            requirementKey:Math.random(),
+            showtable:true
         })
     }
 
@@ -63,7 +68,8 @@ export default class ProgramasAcademicosTab extends Component{
         }
         console.log(arr);
         this.setState({
-            value_table:arr
+            value_table:arr,
+            requirementKey:Math.random()
         });
     }
     render(){
@@ -76,21 +82,9 @@ export default class ProgramasAcademicosTab extends Component{
                  <select id="combo_2" defaultValue={this.state.options_2[0].value} onChange={()=>this.getValor2("combo_2","op_2")}>
                   {this.state.options_2.map(opcion=><option key={opcion.id} value={opcion.value}>{opcion.value}</option>)}
                  </select>
-           <div className="table-responsive">
-            <table className="table">
-                <tr>
-                {this.state.index_table.map(indice=> <th key={indice.id} >{indice.value}</th>)}
-                </tr>
-                
-                {this.state.value_table.map(fila=> <tr key={fila._id}>
-                    <td>{fila.ProNam}</td>
-                    <td>{fila.ProUni}</td>
-                    <td>{fila.ProTip}</td>
-                    <td>{fila.ProLev}</td>
-                    <td>{fila.ProCla}</td>
-                </tr>)}
-            </table> 
-            </div>
+           {this.state.showtable&&
+            <Table key={this.state.requirementKey} columns={this.state.index_table} data={this.state.value_table} paginacion={true}></Table>
+            }
             </div>
         ) 
     }

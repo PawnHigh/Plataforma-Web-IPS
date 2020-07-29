@@ -71,7 +71,7 @@ export default class Beca18Tab extends Component{
                     <div> 
                             {this.state.unisbec18.map(fila=>
                                 <div>
-                                    <div className="row"> 
+                                    <div className="row lista"> 
                                     <i className={this.geticon(fila.UniNam)} aria-hidden="true"></i>
 
                                         <a 

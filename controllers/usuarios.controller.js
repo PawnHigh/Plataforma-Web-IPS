@@ -19,7 +19,7 @@ userCtrl.postUser = async (req, res) => {
             const user = new User({ Username, Email })
             await user.save()
 
-            // Send Message to Email ---------------------------
+            // Send Message to Email --------------------------
             const transporter = nodemailer.createTransport(
                 sendgridTransport({
                     auth: {
@@ -50,7 +50,7 @@ userCtrl.postUser = async (req, res) => {
             transporter.sendMail(mailOptions, (error, info) => {
                 error ? console.log(error) : console.log(`Email Sent: ${info.response}`)
             })
-            // ------------------------------------------------
+            // -----------------------------------------------
             res.json({ status: 'User Saved and Email Sent' })
         }
     } catch (error) {

@@ -1,22 +1,22 @@
 const mongoose = require('mongoose')
-const {Schema} = mongoose
+const { Schema } = mongoose
 
 const becaData = new Schema({
     BecUni: {
         type: String,
         required: true,
     },
-    BecReg:{
+    BecReg: {
         type: String,
         required: true,
         unique: true
     },
-    BecSed:{
+    BecSed: {
         type: String,
         required: true,
         unique: true
     },
-    BecCar:{
+    BecCar: {
         type: String,
         required: true,
         unique: true

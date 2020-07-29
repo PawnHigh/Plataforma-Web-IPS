@@ -6,7 +6,7 @@ Correr el Sistema:
 
 Funcionalidades de las carpetas:
 
-/src
+/backend
 
     /controllers: declarar funciones para las rutas
     /models: esquemas de nuestra base de datos

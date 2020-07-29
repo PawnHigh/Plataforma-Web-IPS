@@ -29,7 +29,7 @@ export default class NavLat extends Component {
   }
   render() {
 
-    const { op, show , verification} = this.state;
+    const { op, show, verification } = this.state;
     if (verification === 'gersrpb@gmail.com') {
       return (
 

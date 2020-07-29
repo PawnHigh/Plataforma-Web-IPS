@@ -94,13 +94,13 @@ actualizacombo=(e)=>{
 
                 </div>
                 <center>
-                    <div id="sinmapa"  style={{ width:"600px" ,height:"450px",display:"flex", justifyContent:"center",alignItems:"center"}}>
+                    <div id="sinmapa"  style={{ height:"450px",display:"flex", justifyContent:"center",alignItems:"center"}}>
                         <span >Aqui va estar el mapa</span>
                     </div>
                 </center>
                 <div id="conmapa" style={{display:"none"}}>
                     <center>
-                        <iframe src={this.state.mapa_scr} width="600" height="450" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0">
+                        <iframe src={this.state.mapa_scr} className="container-fluid" height="450px" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0">
                         </iframe>
                     </center>                
                 </div>

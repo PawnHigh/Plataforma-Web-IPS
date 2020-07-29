@@ -30,7 +30,6 @@ export default class IngresaCuenta extends Component {
     this.setState({
       Username: e.target.value
     })
-    //window.$user=this.state.Username;
     /* console.log(e.target.value) */
   }
 

@@ -43,7 +43,7 @@ export default class Centro extends Component {
                 <h3>{texto}</h3>
 
               </div>
-              
+
             </div>
           </div>
           <a className="carousel-control-prev" href="#demo" data-slide="prev">

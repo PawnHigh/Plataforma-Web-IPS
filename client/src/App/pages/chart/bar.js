@@ -1,26 +1,26 @@
 import React from 'react';
-import {Bar as  Grafico} from 'react-chartjs-2';
+import { Bar as Grafico } from 'react-chartjs-2';
 
-const Bar=({data,datados,labels,backgroundColor, title})=>{
+const Bar = ({ data, datados, labels, backgroundColor, title }) => {
 
-    return(
+    return (
         <div>
             <Grafico
                 data={
                     {
                         labels,
-                        datasets:[
+                        datasets: [
                             {
-                                label:"Cantidad Postulantes",
-                                data:data,
-                                backgroundColor:'blue'
+                                label: "Cantidad Postulantes",
+                                data: data,
+                                backgroundColor: 'blue'
                             },
                             {
-                                label:"Canidad Ingresantes",
-                                data:datados,
-                                backgroundColor:'cyan' 
+                                label: "Canidad Ingresantes",
+                                data: datados,
+                                backgroundColor: 'cyan'
                             }
-                    
+
                         ]
                     }
                 }

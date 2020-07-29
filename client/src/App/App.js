@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import NavLat from './pages/navlateral';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Button, Modal } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import axios from 'axios';
 import localS from 'local-storage'
 
@@ -16,6 +16,8 @@ import Ubicacion from './pages/views/ubicacion';
 import TopUniversidades from './pages/views/topuniversidades';
 import Beca18 from './pages/views/beca18';
 import ModificarLicenciamiento from './pages/views/modificarlicenciamiento';
+import Contacto from './pages/views/contacto';
+import Datos from './pages/views/datos';
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -61,8 +63,8 @@ export default class App extends Component {
         timer: 1500
       })
     } else {
-      localS.set('myData',this.state.EmailVerification)
-      !this.state.show ? this.showunshow() : this.showunshow() 
+      localS.set('myData', this.state.EmailVerification)
+      !this.state.show ? this.showunshow() : this.showunshow()
       return MySwal.fire({
         position: 'top-end',
         icon: 'success',
@@ -86,8 +88,7 @@ export default class App extends Component {
     this.setState({
       name: "React",
       show: !this.state.show,
-      requirementKey: Math.random(),
-      user: ''
+      requirementKey: Math.random()
 
     })
   }
@@ -104,17 +105,17 @@ export default class App extends Component {
                   {/*aqui se va a agregar ícono en vez de la X aun estoy viendo eso*/}
                   <i onClick={this.showunshow} className='fas fa-bars navbar-brand btn btn-light ml-3 p-3 border-0 rounded-0' role="button"></i>
                   <Link to="/" style={{ textDecoration: 'none' }}>
-                    <div className="collapse navbar-collapse logo-text">
-                      <img src="/assets/logo.png" height="60px" width="60px"></img>
-                      <h6 className="text-center mt-2 ml-2 text-muted">Cultura Universitaria</h6>
+                    <div className="navbar-brand media p-0">
+                      <img className="align-self-center mr-0 p-0" src="/assets/logo.png" height="60px" width="60px"></img>
+                      <h6 className="text-center mt-2 ml-2 text-muted my-auto p-0">Cultura Universitaria</h6>
                     </div>
                   </Link>
                 </div>
                 <div className="collapse navbar-collapse justify-content-end">
                   <div className="collapse navbar justify-content-end">
                     <Link className="collapse navbar nav-item" to="/">Inicio</Link>
-                    <div className="collapse navbar nav-item">Contacto</div>
-                    <div className="collapse navbar nav-item">Datos</div>
+                    <Link className="collapse navbar nav-item" to="/contacto">Contacto</Link>
+                    <Link className="collapse navbar nav-item" to="/datos">Datos</Link>
 
                     <Link onClick={this.handleModal} className="collapse navbar nav-item" to="/">Admin</Link>
                     <Link className="nav-item" to="/ingresarcuenta">Registrate</Link>
@@ -156,6 +157,8 @@ export default class App extends Component {
               <Route path="/topuniversidades" exact component={TopUniversidades} />
               <Route path="/becas" exact component={Beca18} />
               <Route path="/modiflicen" exact component={ModificarLicenciamiento} />
+              <Route path="/contacto" exact strict component={Contacto} />
+              <Route path="/datos" exact strict component={Datos} />
             </div>
 
           </div>

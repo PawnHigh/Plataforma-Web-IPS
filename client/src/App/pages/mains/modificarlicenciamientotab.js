@@ -1,154 +1,228 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
-const value_cb_2 = [ { id:1,value: 'Arequipa'},{id:2, value:'lima'}];
-const value_table_index=[
-    {id:1,value:"Nombre de la Universidad",rep:"UniNam"},
-    {id:2,value:"Tipo de Gestion",rep:"UniTip"},
-    {id:3,value:"Licenciamiento",rep:"UniLic"},
-    {id:4,value:"Periodo de Licenciamiento",rep:"UniPer"},
-    {id:5,value:"Ciudad",rep:"UniCit"}];
-const value_modified=[
-    {id:1,value:"LICENCIA OTORGADA"},
-    {id:2,value:"LICENCIA DENEGADA"},
-    {id:3,value:"CON INFORME DE OBSERVACIONES (IO) NOTIFICADO"},
-    {id:4,value:"NINGUNO"},
-    {id:5,value:"CON INFORME DE REVISIÓN DOCUMENTARIA (IRD)"}
+const MySwal = withReactContent(Swal);
+const value_table_index = [
+    { id: 1, value: "Nombre de la Universidad", rep: "UniNam" },
+    { id: 2, value: "Tipo de Gestion", rep: "UniTip" },
+    { id: 3, value: "Licenciamiento", rep: "UniLic" },
+    { id: 4, value: "Periodo de Licenciamiento", rep: "UniPer" },
+    { id: 5, value: "Ciudad", rep: "UniCit" },
+    { id: 5, value: "Beca 18", rep: "UniBe18" }];
+const value_modified = [
+    { id: 1, value: "LICENCIA OTORGADA" },
+    { id: 2, value: "LICENCIA DENEGADA" },
+    { id: 3, value: "CON INFORME DE OBSERVACIONES (IO) NOTIFICADO" },
+    { id: 4, value: "NINGUNO" },
+    { id: 5, value: "CON INFORME DE REVISIÓN DOCUMENTARIA (IRD)" }
 ]
 
-export default class ModificarLicenciamientoTab extends Component{
+export default class ModificarLicenciamientoTab extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          options_1:value_table_index,
-          options_2:[{"id":0,"value":"none"}],
-          index_table:value_table_index,
-          value_table:[],
-          datos_tabla_invariable:[],
-          op_1:value_table_index[0].value, //valor actual del combobox 1 
-          op_2:value_cb_2[0].value,  //valor actual del combobox 2
-          modificar:[],
-          modificar_lic:"",
-          combo_modified:value_modified
+            index_table: value_table_index,
+            modificar: [],
+            modificar_lic: "",
+            combo_modified: value_modified,
+            universidades: [],
+            filtrouniversidades: [],
+            show: false
         }
-        
+
     }
-    
-    //esto es para  la solicitud al server de los datos de licenciamiento 
-    async componentDidMount(){
-        const res=await axios.get('/api/unis');
-        this.setState({
-            value_table:res.data,
-            datos_tabla_invariable:res.data
-        })
-    }
-    getValor(id,name){ //funcion para cambiar el valor de op_1 y op_2
-        const valor=document.getElementById(id).value;   
-        var json=this.state.datos_tabla_invariable;
-        var arr=[];
-        var jsontam=Object.keys(json).length;
-        for(var i=0;i<jsontam;i++){
-            if(!arr.includes(json[i][valor]))
-            arr.push(json[i][valor]);    
-        }
-        var arr2=[];
-        for(var j=0;j<arr.length;j++){
-            arr2.push({"id":j,"value":arr[j]}); 
-        }
-        this.setState({
-            options_2:arr2,
-            op_1:valor
-        });
-    }
-    getValor2(id,name){ //funcion para cambiar el valor de op_1 y op_2
-        const valor=document.getElementById(id).value;
-        var json=this.state.datos_tabla_invariable;
-        var arr=[];
-        var jsontam=Object.keys(json).length;
-        for(var i=0;i<jsontam;i++){
-            if(json[i][this.state.op_1]===valor)
-            arr.push(json[i]);    
+
+    async componentDidMount() {
+        const res = await axios.get('/api/unis');
+        var json = res.data;
+        var arr = [];
+        var jsontam = Object.keys(json).length;
+        for (var i = 0; i < jsontam; i++) {
+            arr.push({ "_id": json[i]["_id"], "value": json[i]["UniNam"] });
         }
         console.log(arr);
         this.setState({
-            value_table:arr
-        });
-    }
-    getFila(fila){
-        console.log(fila);
-        this.setState({
-            modificar:fila,
-            modificar_lic:fila.UniLic
-        });
-        this.state.value_table.map(fil=> {if(fil._id===fila._id){
-                                            document.getElementById(fil._id).className="table-active";
-                                        }
-                                        else{
-                                            document.getElementById(fil._id).className="";
-                                        }
-                                    });
-        document.getElementById("modificar").style.display="block";
-    }
-
-    selected=e=>{
-        this.setState({
-            modificar_lic:e.target.value
+            universidades: arr,
+            filtrouniversidades: [],
         })
-        console.log(this.state.modificar_lic)
     }
 
-    async modificarlic(){
-        var temp1 =this.state.modificar_lic;
-        var temp2 =this.state.modificar.UniLic;
-        if(temp1!=temp2){
-            var mdf=this.state.modificar;
-            mdf.UniLic=this.state.modificar_lic
-            const res =await axios.put('/api/unis/'+mdf._id,mdf);
-            alert("Cambios realizados");
+    actualizacombo = (e) => {
+        var valor = e.target.value;
+        if (valor === "") {
+            this.setState({ filtrouniversidades: [], show: false });
         }
-        else{
-            alert("No de detecto ningun cambio");
+        else {
+            //console.log(json);
+            var json = this.state.universidades;
+            var arr = [];
+            var jsontam = Object.keys(json).length;
+            for (var i = 0; i < jsontam; i++) {
+                var stri = json[i]["value"];
+                if (stri.toLowerCase().includes(valor) || stri.toUpperCase().includes(valor))
+                    arr.push({ "_id": json[i]["_id"], "value": json[i]["value"] });
+            }
+            this.setState({
+                filtrouniversidades: arr,
+                show: true
+            })
+            if (arr.length === 0)
+                this.setState({ show: false })
         }
     }
 
-    render(){
+    async seleccionar(id, nom) {
+        var elemento = document.getElementById("bus");
+        elemento.value = nom;
+        const res = await axios.get('/api/unis/' + id);
+        this.setState({
+            filtrouniversidades: [],
+            modificar: res.data,
+            modificar_lic: res.data.UniLic,
+            show: false
+        })
+        console.log(res.data);
+        document.getElementById("modificar").style.display = "block";
+    }
+
+
+    selected = e => {
+        this.setState({
+            modificar_lic: e.target.value
+        })
+    }
+
+    async modificarlic() {
+        return MySwal.fire({
+            title: '¿Estas seguro?',
+            text: 'De realizar los cambios de licenciamiento de esta universidad',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si',
+            cancelButtonText: "Cancelar"
+        }).then(async (result) => {
+            if (result.value) {
+                var temp1 = this.state.modificar_lic;
+                var temp2 = this.state.modificar.UniLic;
+                if (temp1 != temp2) {
+                    var mdf = this.state.modificar;
+                    mdf.UniLic = this.state.modificar_lic
+                    await axios.put('/api/unis/' + mdf._id, mdf);
+                    const res = await axios.get('/api/unis/' + mdf._id);
+                    this.setState({
+                        modificar: res.data
+                    });
+                    return MySwal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        width: 300,
+                        padding: 0,
+                        html: '<h6>Cambios realizados</h6>',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }
+                else {
+                    return MySwal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        width: 300,
+                        padding: 0,
+                        html: '<h6>Ningun cambio detectado</h6>',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            }
+        })
+    }
+
+    render() {
         return (
             <div className="col-12 bg-light pt-3" >
-                 Buscar por:
-                 <select id="combo_1" defaultValue={this.state.options_1[0].value} onChange={()=>this.getValor("combo_1","op_1")}>
-                  {this.state.options_1.map(opcion=><option key={opcion.id} value={opcion.rep}>{opcion.value}</option>)}
-                 </select>
-                 <select id="combo_2" defaultValue={this.state.options_2[0].value} onChange={()=>this.getValor2("combo_2","op_2")}>
-                  {this.state.options_2.map(opcion=><option key={opcion.id} value={opcion.value}>{opcion.value}</option>)}
-                 </select>
-           <div className="table-responsive">
-            <table className="table table">
-                <tr>
-                {this.state.index_table.map(indice=> <th key={indice.id} >{indice.value}</th>)}
-                </tr>
-                {this.state.value_table.map(fila=> <tr id={fila._id} key={fila._id} style={{cursor:"pointer"}} onClick={()=>this.getFila(fila)}>
-                    <td>{fila.UniNam}</td>
-                    <td>{fila.UniTip}</td>
-                    <td>{fila.UniLic}</td>
-                    <td>{fila.UniPer} años</td>
-                    <td>{fila.UniCit}</td>
-                </tr>)}
-            </table> 
+                <div className="mt-3">
+                    <div className="form-label-group">
+                        <input id="bus" className="form-control mr-sm-2" onChange={this.actualizacombo} type="search" placeholder="Busca Tu universidad" aria-label="Search" />
+                        <label for="bus">Busca tu Universidad</label>
+                    </div>
+                    <div className="row">
+                        <div className="col-12">
+                            {this.state.show &&
+                                <div className="col-md-12">
+                                    <ul className="nav nav-pills nav-stacked anyClass">
+                                        <li className="nav-item">
+                                            {this.state.filtrouniversidades.map(opcion => <div key={opcion._id} id="cb1" className="nav-link" style={{ cursor: "pointer" }} href="#" onClick={() => this.seleccionar(opcion._id, opcion.value)} >{opcion.value}</div>)}
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+                <div id="modificar" style={{ display: "none" }} >
+                    <div className="text-white text-center bg-light rounded">
+                        <br /><br />
+                        <h6 className="text-secondary">DATOS DE LA UNIVERSIDAD A EDITAR</h6>
+                        <div class="table-responsive">
+                            <table class="table table-striped  bg-light text-secondary " >
+                                <thead>
+                                    <tr>
+                                        <th>Dato</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Universidad </td>
+                                        <td>{this.state.modificar.UniNam}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tipo de Uiversidad </td>
+                                        <td>{this.state.modificar.UniTip}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Estado de Licenciamiento </td>
+                                        <td><select id="combo_m" class="bg-light" value={this.state.modificar_lic} onChange={this.selected}>
+                                            {this.state.combo_modified.map(opcion => <option key={opcion.id} value={opcion.value}>{opcion.value}</option>)}
+                                        </select>
+                                            <br /></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Ciudad </td>
+                                        <td>{this.state.modificar.UniCit}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <center><button className="btn btn-info btn-sm pr-7" onClick={() => this.modificarlic()}>Guardar Cambios</button></center>
+                    <br /><br />
+
+                    <div className="table-responsive">
+                        <table className="table table">
+                            <tr>
+                                {this.state.index_table.map(indice => <th key={indice.id} >{indice.value}</th>)}
+                            </tr>
+                            <tr key={this.state.modificar._id} >
+                                <td>{this.state.modificar.UniNam}</td>
+                                <td>{this.state.modificar.UniTip}</td>
+                                <td>{this.state.modificar.UniLic}</td>
+                                <td>{this.state.modificar.UniPer} años</td>
+                                <td>{this.state.modificar.UniCit}</td>
+                                <td>{(this.state.modificar.UniBe18) ? "Si tiene Acceso" : "No tiene Acceso"}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br /><br />
+
             </div>
-            <div id="modificar" style={{display:"none"}}>
-                Universidad : {this.state.modificar.UniNam}<br/><br/>
-                Tipo de Uiversidad : {this.state.modificar.UniTip}<br/>
-                Estado de Licenciamiento :
-                <select id="combo_m" value={this.state.modificar_lic} onChange={this.selected}>
-                  {this.state.combo_modified.map(opcion=><option key={opcion.id} value={opcion.value}>{opcion.value}</option>)}
-                 </select>
-                <br/>
-                Ciudad: {this.state.modificar.UniCit}<br/>
-                <center><button className="btn btn-secondary btn-sm" onClick={()=>this.modificarlic()}>Guardar Cambios</button></center>
-               
-            </div>
-            </div>
-        ) 
+        )
     }
 }
- 
