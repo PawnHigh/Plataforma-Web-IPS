@@ -10,16 +10,22 @@ export default class TopUniversidades extends Component {
     this.state = {
       show: true,
       ivalue: 6,
-      texto: "Top 10 universidades de Lima y Arequipa"
+      texto: "Top Universidades de Lima y Arequipa"
     }
     // this.cambiacolor=this.cambiacolor.bind(this);
   }
   render() {
     return (
 
-      <div className='col-md-12 px-0 '>
-        <Centro texto={this.state.texto}></Centro>
-        <Main codigo={this.state.ivalue}></Main>
+      <div className="cont-pri">
+        <div className='row mx-0'>
+          <NavLat color={this.state.ivalue} ></NavLat>
+          <div className='col-md-12 px-0 '>
+            <Centro texto={this.state.texto}></Centro>
+            <Main codigo={this.state.ivalue}></Main>
+
+          </div>
+        </div>
       </div>
 
     )

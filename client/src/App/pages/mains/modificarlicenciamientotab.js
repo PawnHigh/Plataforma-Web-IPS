@@ -5,12 +5,12 @@ import withReactContent from 'sweetalert2-react-content'
 
 const MySwal = withReactContent(Swal);
 const value_table_index = [
-    { id: 1, value: "Nombre de la Universidad", rep: "UniNam" },
-    { id: 2, value: "Tipo de Gestion", rep: "UniTip" },
-    { id: 3, value: "Licenciamiento", rep: "UniLic" },
-    { id: 4, value: "Periodo de Licenciamiento", rep: "UniPer" },
-    { id: 5, value: "Ciudad", rep: "UniCit" },
-    { id: 5, value: "Beca 18", rep: "UniBe18" }];
+    { id: 1, value: "NOMBRE DE LA UNIVERSIDAD", rep: "UniNam" },
+    { id: 2, value: "TIPO DE GESTION", rep: "UniTip" },
+    { id: 3, value: "LICENCIAMIENTO", rep: "UniLic" },
+    { id: 4, value: "PERIODO DE LICENCIAMIENTO", rep: "UniPer" },
+    { id: 5, value: "CIUDAD", rep: "UniCit" },
+    { id: 5, value: "BECA 18", rep: "UniBe18" }];
 const value_modified = [
     { id: 1, value: "LICENCIA OTORGADA" },
     { id: 2, value: "LICENCIA DENEGADA" },
@@ -84,7 +84,9 @@ export default class ModificarLicenciamientoTab extends Component {
             show: false
         })
         console.log(res.data);
+        document.getElementById("sinmodificar").style.display = "none";
         document.getElementById("modificar").style.display = "block";
+
     }
 
 
@@ -164,37 +166,38 @@ export default class ModificarLicenciamientoTab extends Component {
                     </div>
 
                 </div>
-                <div id="modificar" style={{ display: "none" }} >
+                <div className="col-12 bg-light" id="sinmodificar" style={{ paddingTop: "380px" }}></div>
+                <div id="modificar" style={{ display: "none" }} className="containerTable" >
                     <div className="text-white text-center bg-light rounded">
                         <br /><br />
-                        <h6 className="text-secondary">DATOS DE LA UNIVERSIDAD A EDITAR</h6>
+                        <h6 className="text-secondary textTi">DATOS DE LA UNIVERSIDAD A EDITAR</h6>
                         <div class="table-responsive">
                             <table class="table table-striped  bg-light text-secondary " >
                                 <thead>
                                     <tr>
-                                        <th>Dato</th>
-                                        <th>Valor</th>
+                                        <th>DATO</th>
+                                        <th>VALOR</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Universidad </td>
+                                        <td>UNIVERSIDAD </td>
                                         <td>{this.state.modificar.UniNam}</td>
                                     </tr>
                                     <tr>
-                                        <td>Tipo de Uiversidad </td>
+                                        <td>TIPO DE UNIVERSIDAD </td>
                                         <td>{this.state.modificar.UniTip}</td>
                                     </tr>
                                     <tr>
-                                        <td>Estado de Licenciamiento </td>
-                                        <td><select id="combo_m" class="bg-light" value={this.state.modificar_lic} onChange={this.selected}>
+                                        <td>ESTADO DE LICENCIAMIENTO </td>
+                                        <td><select id="combo_m" className="bg-light mb-0" value={this.state.modificar_lic} onChange={this.selected}>
                                             {this.state.combo_modified.map(opcion => <option key={opcion.id} value={opcion.value}>{opcion.value}</option>)}
                                         </select>
                                             <br /></td>
 
                                     </tr>
                                     <tr>
-                                        <td>Ciudad </td>
+                                        <td>CIUDAD </td>
                                         <td>{this.state.modificar.UniCit}</td>
                                     </tr>
                                 </tbody>

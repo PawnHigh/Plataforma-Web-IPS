@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { Schema } = mongoose
+const {Schema} = mongoose
 
 const mejoresData = new Schema({
     MejNom: {
@@ -7,15 +7,15 @@ const mejoresData = new Schema({
         required: true,
         unique: true
     },
-    MejPer: {
+    MejPer:{
         type: Number,
         required: true,
     },
-    MejTip: {
+    MejTip:{
         type: String,
         required: true
     },
-    MejReg: {
+    MejReg:{
         type: String,
         required: true
     }

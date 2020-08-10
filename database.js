@@ -1,4 +1,5 @@
 /* CONEXIÓN DE LA BASE DE DATOS CON MONGOOSE */
+
 const mongoose = require('mongoose')
 
 const URI = process.env.MONGO_URI

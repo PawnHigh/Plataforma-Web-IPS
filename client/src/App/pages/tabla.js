@@ -26,7 +26,7 @@ export default class Table extends Component {
         await this.updateshow();
 
     }
-    numberpages() {
+    async numberpages() {
         var sizeperpage = this.state.sizeperpage;
         var jsontam = Object.keys(this.state.value_table).length;
         var modul = jsontam % sizeperpage;
@@ -35,7 +35,7 @@ export default class Table extends Component {
         console.log(numpages);
         this.setState({ numpages: numpages, numelementos: jsontam });
     }
-    updateshow() {
+    async updateshow() {
         var json = this.state.value_table;
         var arr = [];
         var jsontam = Object.keys(json).length;
@@ -82,7 +82,7 @@ export default class Table extends Component {
         });
     }
 
-    updateflechas(index) {
+    async updateflechas(index) {
         var i = parseInt(index);
         console.log(i);
         var numpages = this.state.numpages;
@@ -145,41 +145,39 @@ export default class Table extends Component {
 
     }
     toGetColor(c) {
-        return this.state.index == c ? 'nav-link text-primary bg-dark' : 'nav-link text-light bg-secondary';
+        return this.state.index == c ? 'nav-link text-light bg-dark rounded' : 'nav-link text-dark bg-light rounded';
     }
     render() {
         return (
-            <div>
+            <div className="containerTable mb-3">
                 <div className="tabledata row">
-                    <div className="t-row d-flex col-12 col-sm-3 m-auto py-auto">
-                        <select id="size" className="col-8 col-sm-10 col-md-auto m-auto" onChange={() => this.cambiasizepage("size")}>
+                    <div className=" d-flex col-12 col-sm-7 py-auto">
+                        <div className="m-4 p-0">
+                            Mostrar  {" " + this.state.inicio + " "} a {" " + this.state.fin + " filas"} de {" " + this.state.numelementos + " elementos"}
+                        </div>
+                        <select id="size" className="col-3 col-md-auto bg-dark text-light" onChange={() => this.cambiasizepage("size")}>
                             <option value="10" >10</option>
                             <option value="15">15</option>
                             <option value="20">20</option>
                         </select>
+                    </div>
 
-                    </div>
-                    <div className="t-row d-flex col-12 col-sm-4 m-auto py-auto">
-                        <div className="m-auto p-auto">
-                            show  {" " + this.state.inicio + " "} to {" " + this.state.fin + " "} of {" " + this.state.numelementos + " entries"}
-                        </div>
-                    </div>
-                    <div className="t-row d-flex col-12 col-sm-5 m-0 p-0">
+                    <div className="d-flex col-12 col-sm-5 m-0 p-0">
                         <nav className="d-flex navbar navbar-expand bg-light text-light m-auto">
                             <div className="m-auto p-0">
                                 <ul className="navbar-nav d-flex">
                                     {this.state.doubleback &&
                                         <li className="nav-item p-1">
-                                            <a id="<<" href='#' onClick={this.actualizadatos} className="bg-secondary text-light nav-link">{"<<"}</a>
+                                            <a id="<<" href='#' onClick={this.actualizadatos} className="bg-dark text-light nav-link">{"<<"}</a>
                                         </li>
                                     }
                                     {this.state.back &&
                                         <li className=" nav-item p-1">
-                                            <a id="<" href='#' onClick={this.actualizadatos} className="bg-secondary text-light nav-link">{"<"}</a>
+                                            <a id="<" href='#' onClick={this.actualizadatos} className="bg-dark text-light nav-link">{"<"}</a>
                                         </li>
                                     }
                                     {this.state.indexselect.map(fila =>
-                                        <li className=" nav-item p-1">
+                                        <li className="nav-item p-1">
                                             <a id={fila} href='#' onClick={this.actualizadatos} className={this.toGetColor(fila)}>
                                                 {fila}
                                             </a>
@@ -187,12 +185,12 @@ export default class Table extends Component {
                                     }
                                     {this.state.next &&
                                         <li className=" nav-item p-1">
-                                            <a id=">" href='#' onClick={this.actualizadatos} className="bg-secondary text-light nav-link">{">"}</a>
+                                            <a id=">" href='#' onClick={this.actualizadatos} className="bg-dark text-light nav-link">{">"}</a>
                                         </li>
                                     }
                                     {this.state.doublenext &&
                                         <li className=" nav-item p-1">
-                                            <a id=">>" href='#' onClick={this.actualizadatos} className="bg-secondary text-light nav-link">{">>"}</a>
+                                            <a id=">>" href='#' onClick={this.actualizadatos} className="bg-dark text-light nav-link">{">>"}</a>
                                         </li>
                                     }
                                 </ul>
@@ -215,8 +213,6 @@ export default class Table extends Component {
                         </tr>)}
                     </table>
                 </div>
-
-
 
             </div>
         )

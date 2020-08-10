@@ -10,7 +10,7 @@ export default class Beca18 extends Component {
     this.state = {
       show: true,
       ivalue: 3,
-      texto: "Universidades que con posibilidad de Beca 18"
+      texto: "Universidades con beneficio de Beca 18"
     }
 
 
@@ -19,9 +19,15 @@ export default class Beca18 extends Component {
   render() {
     return (
 
-      <div className='col-md-12 px-0'>
-        <Centro texto={this.state.texto}></Centro>
-        <Main codigo={this.state.ivalue}></Main>
+      <div className="cont-pri">
+        <div className='row mx-0'>
+          <NavLat color={this.state.ivalue} ></NavLat>
+          <div className='col-md-12 px-0 '>
+            <Centro texto={this.state.texto}></Centro>
+            <Main codigo={this.state.ivalue}></Main>
+
+          </div>
+        </div>
       </div>
 
     )

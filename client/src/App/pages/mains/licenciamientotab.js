@@ -4,11 +4,11 @@ import Table from '../tabla';
 
 const value_cb_2 = [{ id: 1, value: 'Arequipa' }, { id: 2, value: 'lima' }];
 const value_table_index = [
-    { id: 1, value: "Nombre de la Universidad", rep: "UniNam" },
-    { id: 2, value: "Tipo de Gestion", rep: "UniTip" },
-    { id: 3, value: "Licenciamiento", rep: "UniLic" },
-    { id: 4, value: "Periodo de Licenciamiento", rep: "UniPer" },
-    { id: 5, value: "Ciudad", rep: "UniCit" }];
+    { id: 1, value: "NOMBRE DE LA UNIVERSIDAD", rep: "UniNam" },
+    { id: 2, value: "TIPO DE GESTION", rep: "UniTip" },
+    { id: 3, value: "LICENCIAMIENTO", rep: "UniLic" },
+    { id: 4, value: "PERIODO DE LICENCIAMIENTO", rep: "UniPer" },
+    { id: 5, value: "CIUDAD", rep: "UniCit" }];
 
 export default class LicenciamientoTab extends Component {
     constructor(props) {
@@ -74,19 +74,41 @@ export default class LicenciamientoTab extends Component {
     render() {
         return (
             <div className="col-12 bg-light pt-3" >
-                Buscar por:
-                <select id="combo_1" defaultValue={this.state.options_1[0].value} onChange={() => this.getValor("combo_1")}>
-                    {this.state.options_1.map(opcion => <option key={opcion.id} value={opcion.rep}>{opcion.value}</option>)}
-                </select>
-                <select id="combo_2" defaultValue={this.state.options_2[0].value} onChange={() => this.getValor2("combo_2")}>
-                    {this.state.options_2.map(opcion => <option key={opcion.id} value={opcion.value}>{opcion.value}</option>)}
-                </select>
-
                 {this.state.showtable &&
-                    <Table key={this.state.requirementKey} columns={this.state.index_table} data={this.state.value_table} paginacion={true}></Table>
+                    <div className='row'>
+                        <div className='filtrotex col-12 col-md-3 col-lg-2 mx-0 px-0'>
+                            <div className='text-center my-2'>
+                                BUSCAR POR:
+                        </div>
+                        </div>
+                        <div className='col-12 col-sm-5 col-md-4 col-lg-3 ml-0'>
+                            <select className='form-control mx-auto col-12' id="combo_1" defaultValue={this.state.options_1[0].value} onChange={() => this.getValor("combo_1")}>
+                                {this.state.options_1.map(opcion => <option key={opcion.id} value={opcion.rep}>{opcion.value}</option>)}
+                            </select>
+                        </div>
+                        <div className='col-12 col-sm-5 col-md-4 col-lg-3 ml-0'>
+                            <select className='form-control mx-auto col-12' id="combo_2" defaultValue={this.state.options_2[0].value} onChange={() => this.getValor2("combo_2")}>
+                                {this.state.options_2.map(opcion => <option key={opcion.id} value={opcion.value}>{opcion.value}</option>)}
+                            </select>
+                        </div>
+                    </div>
                 }
-
+                {this.state.showtable ?
+                    <Table key={this.state.requirementKey} columns={this.state.index_table} data={this.state.value_table} paginacion={true}></Table>
+                    :
+                    <center>
+                        <div className='row pt-5'>
+                            <img
+                                src='assets/load.gif'
+                                style={{ width: '80px', margin: 'auto' }}
+                                alt='loading...'
+                            />
+                        </div>
+                        <div className="col-12 bg-light" style={{ paddingTop: "106px" }}></div>
+                    </center>
+                }
             </div>
+
         )
     }
 }

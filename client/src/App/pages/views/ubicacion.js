@@ -18,9 +18,15 @@ export default class Ubicacion extends Component {
   render() {
     return (
 
-      <div className='col-md-12 px-0'>
-        <Centro texto={this.state.texto}></Centro>
-        <Main codigo={this.state.ivalue}></Main>
+      <div className="cont-pri">
+        <div className='row mx-0'>
+          <NavLat color={this.state.ivalue} ></NavLat>
+          <div className='col-md-12 px-0 '>
+            <Centro texto={this.state.texto}></Centro>
+            <Main codigo={this.state.ivalue}></Main>
+
+          </div>
+        </div>
       </div>
 
     )

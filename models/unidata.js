@@ -1,16 +1,16 @@
 const mongoose = require('mongoose')
-const { Schema } = mongoose
+const {Schema} = mongoose
 
 const uniData = new Schema({
     UniNam: {
         type: String,
         required: true
     },
-    UniTip: {
+    UniTip:{
         type: String,
         required: true
     },
-    UniLic: {
+    UniLic: { 
         type: String,
         required: true
     },
@@ -25,7 +25,7 @@ const uniData = new Schema({
     UniBe18: {
         type: Boolean,
         required: true
-    },
+    }, 
     UniEnt: {
         type: new Array(),
         required: true
@@ -41,5 +41,5 @@ const uniData = new Schema({
 })
 
 // El nombre Task se convertira en la base de datos como una coleccion llamada tasks
-module.exports = mongoose.model('universidades', uniData)
+module.exports = mongoose.model('universidades',uniData) 
 

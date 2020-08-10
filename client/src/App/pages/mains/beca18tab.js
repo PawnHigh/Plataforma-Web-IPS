@@ -3,9 +3,9 @@ import axios from 'axios';
 
 const value_cb_2 = [ { id:1,value: 'Arequipa'},{id:2, value:'lima'}];
 const value_table_index=[
-    {id:1,value:"Región",rep:"BecReg"},
-    {id:2,value:"Sede",rep:"BecSed"},
-    {id:3,value:"Carrera",rep:"BecCar"}];
+    {id:1,value:"REGION",rep:"BecReg"},
+    {id:2,value:"SEDE",rep:"BecSed"},
+    {id:3,value:"CARRERA",rep:"BecCar"}];
 
 export default class Beca18Tab extends Component{
     constructor(props) {
@@ -17,7 +17,8 @@ export default class Beca18Tab extends Component{
           value_table_becas:[],
           tempbecas:[],
           showtempbecas:false,
-          idshow:'nada'
+          idshow:'nada',
+          showtable:false
         }
 
     }
@@ -35,7 +36,8 @@ export default class Beca18Tab extends Component{
         }
         this.setState({
             value_table_becas:becas.data,
-            unisbec18:arr
+            unisbec18:arr,
+            showtable:true
         })
     }
   
@@ -66,51 +68,55 @@ export default class Beca18Tab extends Component{
     render(){
         return (
             <div>
-                <div className="container py-3">
-                    <h4>Universidades con Beca 18</h4>
-                    <div> 
-                            {this.state.unisbec18.map(fila=>
-                                <div>
-                                    <div className="row lista"> 
-                                    <i className={this.geticon(fila.UniNam)} aria-hidden="true"></i>
-
-                                        <a 
-                                            key={fila._id} 
-                                            id={fila.UniNam} 
-                                            href="#" 
-                                            className="nav-link" 
-                                            onClick={this.seleccionado} 
-                                        >
-                                            {fila.UniNam}
-                                        </a>
-                                    </div>
-                                    <div>
-                                    {this.state.idshow===fila.UniNam&&
-                                        <div className="table-responsive">
-                                            <table className="table table">
-                                                
-                                                <tr>
-                                                {this.state.index_table.map(indice=> <th key={indice.id} >{indice.value}</th>)}
-                                                </tr>
-                                                
-                                                {this.state.tempbecas.map(fila=> <tr key={fila._id}>
-                                                    <td>{fila.BecReg}</td>
-                                                    <td>{fila.BecSed}</td>
-                                                    <td>{fila.BecCar}</td>        
-                                                </tr>)}
-                                            </table>
-                                
-                                        </div>
-
-                                    }
-                                    </div>
+            {this.state.showtable?
+            <div className="container py-3">
+            <div> 
+                    {this.state.unisbec18.map(fila=>
+                        <div>
+                            <div className="row lista"> 
+                            <i className={this.geticon(fila.UniNam)} aria-hidden="true"></i>
+                                <a 
+                                    key={fila._id} 
+                                    id={fila.UniNam} 
+                                    href="#" 
+                                    className="bec-18 nav-link" 
+                                    onClick={this.seleccionado} 
+                                >
+                                    {fila.UniNam}
+                                </a>
+                            </div>
+                            <div>
+                            {this.state.idshow===fila.UniNam&&
+                                <div className="table-responsive">
+                                    <table className="table table"> 
+                                        <tr>
+                                        {this.state.index_table.map(indice=> <th key={indice.id} >{indice.value}</th>)}
+                                        </tr>
+                                        {this.state.tempbecas.map(fila=> <tr key={fila._id}>
+                                            <td>{fila.BecReg}</td>
+                                            <td>{fila.BecSed}</td>
+                                            <td>{fila.BecCar}</td>        
+                                        </tr>)}
+                                    </table>
                                 </div>
-                            )}
-
+                            }
+                            </div>
                         </div>
+                    )}
                 </div>
-            
-                    
+        </div>
+            :
+            <center>
+                <div className='row pt-5'>
+                <img
+                    src='assets/load.gif'
+                    style={{width:'80px',margin:'auto'}}
+                    alt='loading...'
+                /> 
+                </div>
+                <div className="col-12 bg-light" style={{paddingTop:"106px"}}></div>
+            </center>
+            }     
         </div>
         ) 
     }

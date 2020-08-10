@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { getPro } = require('../controllers/programas.controller')
+const {getPro} = require('../controllers/programas.controller')
 
 router.get('/', getPro)
 

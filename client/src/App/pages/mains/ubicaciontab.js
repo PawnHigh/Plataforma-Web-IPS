@@ -71,7 +71,7 @@ actualizacombo=(e)=>{
     render(){
         return (
 
-            <div className="container pl-0 pt-1">
+            <div className="container px-0 pt-1">
                 <div className="mt-3">
                     <div className="form-label-group">
                         <input id="bus" className="form-control mr-sm-2" onChange={this.actualizacombo}type="search" placeholder="Busca Tu universidad" aria-label="Search"/>
@@ -81,10 +81,10 @@ actualizacombo=(e)=>{
                     <div className="row">
                     <div className="col-12">
                     {this.state.show&&
-                    <div className="col-md-12">
+                    <div className="col-md-12 px-0">
                         <ul className="nav nav-pills nav-stacked anyClass">
                             <li className="nav-item">
-                                {this.state.filtrouniversidades.map(opcion=><div key={opcion._id} id="cb1" className="nav-link"  style={{cursor:"pointer"}} href="#" onClick={()=>this.seleccionar(opcion.src,opcion.value)} >{opcion.value}</div>)}
+                                {this.state.filtrouniversidades.map(opcion=><div key={opcion._id} id="cb1" className="nav-link px-2"  style={{cursor:"pointer"}} href="#" onClick={()=>this.seleccionar(opcion.src,opcion.value)} >{opcion.value}</div>)}
                             </li>
                         </ul>
                     </div>
@@ -94,13 +94,13 @@ actualizacombo=(e)=>{
 
                 </div>
                 <center>
-                    <div id="sinmapa"  style={{ height:"450px",display:"flex", justifyContent:"center",alignItems:"center"}}>
+                    <div className="border" id="sinmapa"  style={{ height:"450px",display:"flex", justifyContent:"center",alignItems:"center"}}>
                         <span >Aqui va estar el mapa</span>
                     </div>
                 </center>
                 <div id="conmapa" style={{display:"none"}}>
                     <center>
-                        <iframe src={this.state.mapa_scr} className="container-fluid" height="450px" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0">
+                        <iframe src={this.state.mapa_scr} className="container-fluid px-0" height="450px" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0">
                         </iframe>
                     </center>                
                 </div>

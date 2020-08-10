@@ -23,6 +23,7 @@ app.use('/api/users', require('./routes/usuarios.routes'))
 app.use('/api/becas', require('./routes/becas.routes'))
 app.use('/api/mejores', require('./routes/mejores.routes'))
 
+
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')))
 

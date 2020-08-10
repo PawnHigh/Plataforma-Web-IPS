@@ -14,7 +14,7 @@ export default class Centro extends Component {
   render() {
     const { op, texto } = this.state;
     return (
-      <div className="col-12 p-0">
+      <div className="col-12 p-0 bg-light">
         <div id="demo" className="carousel slide" data-ride="carousel">
 
           <ul className="carousel-indicators">
@@ -26,25 +26,24 @@ export default class Centro extends Component {
             <div className="carousel-item active" style={{ height: 260 }}>
               <img className='img-fluid' src="assets/image1.jpg" alt="imagen" />
               <div className="carousel-caption">
-                <h3>{texto}</h3>
+                <h3 className="textoCarrucel">{texto}</h3>
 
               </div>
             </div>
             <div className="carousel-item" style={{ height: 260 }}>
               <img className='img-fluid' src="assets/image2.jpg" alt="imagen" />
               <div className="carousel-caption">
-                <h3>{texto}</h3>
+                <h3 className="textoCarrucel">{texto}</h3>
 
               </div>
             </div>
-            <div className="carousel-item" style={{ height: 260 }} >
+            <div className="carousel-item" style={{ height: 260 }}>
               <img className='img-fluid' src="assets/image3.jpg" alt="imagen" />
               <div className="carousel-caption">
-                <h3>{texto}</h3>
-
+                <h3 className="textoCarrucel">{texto}</h3>
               </div>
-
             </div>
+
           </div>
           <a className="carousel-control-prev" href="#demo" data-slide="prev">
             <span className="carousel-control-prev-icon"></span>
