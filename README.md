@@ -36,4 +36,4 @@
 
 # Registro de Usuarios
 
-![alt tag](docs/registro.png)
+![alt tag](docs/registro1.png)

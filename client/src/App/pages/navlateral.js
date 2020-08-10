@@ -169,7 +169,7 @@ export default class NavLat extends Component {
                 <Link id="3" className={this.toGetColor(3)} onClick={this.cambiacolor} to="/becas">PROGRAMA NACIONAL DE BECA 18</Link>
                 <Link id="4" className={this.toGetColor(4)} onClick={this.cambiacolor} to="/ubicacionuniversidades">UBICACIÓN DE UNIVERSIDADES</Link>
                 <Link id="5" className={this.toGetColor(5)} onClick={this.cambiacolor} to={"/cantidadingresantes"}>CANTIDAD DE INGRESANTES</Link>
-                <Link id="6" className={this.toGetColor(5)} onClick={this.cambiacolor} to={"/topuniversidades"}>TOP 15 UNIVERSIDADES</Link>
+                <Link id="6" className={this.toGetColor(6)} onClick={this.cambiacolor} to={"/topuniversidades"}>TOP 15 UNIVERSIDADES</Link>
                 <Link id="7" className={this.toGetColor(7)} onClick={this.cambiacolor} to={"/modiflicen"}>MODIFICAR LICENCIAMIENTO</Link>
               </div>
             </div>
@@ -242,7 +242,7 @@ export default class NavLat extends Component {
                 <Link id="3" className={this.toGetColor(3)} onClick={this.cambiacolor} to="/becas">PROGRAMA NACIONAL DE BECA 18</Link>
                 <Link id="4" className={this.toGetColor(4)} onClick={this.cambiacolor} to="/ubicacionuniversidades">UBICACIÓN DE UNIVERSIDADES</Link>
                 <Link id="5" className={this.toGetColor(5)} onClick={this.cambiacolor} to={"/cantidadingresantes"}>CANTIDAD DE INGRESANTES</Link>
-                <Link id="6" className={this.toGetColor(5)} onClick={this.cambiacolor} to={"/topuniversidades"}>TOP 15 UNIVERSIDADES</Link>
+                <Link id="6" className={this.toGetColor(6)} onClick={this.cambiacolor} to={"/topuniversidades"}>TOP 15 UNIVERSIDADES</Link>
               </div>
             </div>
           )}
