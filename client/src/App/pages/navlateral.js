@@ -128,7 +128,7 @@ export default class NavLat extends Component {
               <Link className="nav-item nav-link" to="/">Inicio</Link>
               <Link className="nav-item nav-link" to="/contacto">Contacto</Link>
               <Link className="nav-item nav-link" to="/datos">Datos</Link>
-              <Link className="nav-item nav-link" to="/ingresarcuenta">Registrate</Link>
+              <Link className="nav-item nav-link" style={{ color: 'rgba(104,169,242)' }} to="/ingresarcuenta">Registrate</Link>
               <Link onClick={this.handleModal} style={{ color: 'rgba(104,169,242)' }} className="nav-item nav-link" to="#">
                 <i className='fas fa-user-circle border-0 my-auto' role="button"></i> Admin
               </Link>
@@ -150,19 +150,19 @@ export default class NavLat extends Component {
             <div className='col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 pl-0 position-fixed cont-pri-lat m-0 px-0'>
               <div className='bg-light border'>
                 {this.state.p_pequeña &&
-                  <Link id="7" className={this.toGetColor(7)} onClick={this.cambiacolor} to="/">INICIO</Link>
+                  <Link id="8" className={this.toGetColor(8)} onClick={this.cambiacolor} to="/">INICIO</Link>
                 }
                 {this.state.p_pequeña &&
-                  <Link id="8" className={this.toGetColor(8)} onClick={this.cambiacolor} to="/contacto">CONTACTO</Link>
+                  <Link id="9" className={this.toGetColor(9)} onClick={this.cambiacolor} to="/contacto">CONTACTO</Link>
                 }
                 {this.state.p_pequeña &&
-                  <Link id="9" className={this.toGetColor(9)} onClick={this.cambiacolor} to="/datos">DATOS</Link>
+                  <Link id="10" className={this.toGetColor(10)} onClick={this.cambiacolor} to="/datos">DATOS</Link>
                 }
                 {this.state.p_pequeña &&
-                  <Link id="10" className={this.toGetColor(10)} onClick={this.cambiacolor} to="/registrate">REGISTRATE</Link>
+                  <Link id="11" className={this.toGetColor(11)} onClick={this.cambiacolor} to="/ingresarcuenta">REGISTRATE</Link>
                 }
                 {this.state.p_pequeña &&
-                  <Link id="11" className={this.toGetColor(11)} onClick={this.cambiacolor,this.handleModal} to="#">ADMIN</Link>
+                  <Link id="12" className={this.toGetColor(12)} onClick={this.cambiacolor,this.handleModal} to="#">ADMIN</Link>
                 }
                 <Link id="1" className={this.toGetColor(1)} onClick={this.cambiacolor} to="/licenciamiento">LICENCIAMIENTO DE UNIVERSIDADES</Link>
                 <Link id="2" className={this.toGetColor(2)} onClick={this.cambiacolor} to="/programasacademicos">PROGRAMAS ACADÉMICOS</Link>
@@ -232,7 +232,7 @@ export default class NavLat extends Component {
                   <Link id="9" className={this.toGetColor(9)} onClick={this.cambiacolor} to="/datos">DATOS</Link>
                 }
                 {this.state.p_pequeña &&
-                  <Link id="10" className={this.toGetColor(10)} onClick={this.cambiacolor} to="/registrate">REGISTRATE</Link>
+                  <Link id="10" className={this.toGetColor(10)} onClick={this.cambiacolor} to="/ingresarcuenta">REGISTRATE</Link>
                 }
                 {this.state.p_pequeña &&
                   <Link id="11" className={this.toGetColor(11)} onClick={this.cambiacolor,this.handleModal} to="#">ADMIN</Link>
